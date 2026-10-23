@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Cleaning — Clean Fresh Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#121B4E;
+    --navy-deep:#0A1236;
+    --gold:#FFD639;
+    --cream:#F5F3EA;
+    --sky:#8FD6EC;
+    --ink:#1B2340;
+    --line:rgba(255,255,255,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* NAV (shared look with main site) */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px;}
+  .brand{display:flex;align-items:center;}
+  .brand img{height:44px;width:auto;display:block;border-radius:6px;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{color:var(--cream);opacity:0.85;font-size:0.92rem;font-weight:500;}
+  .nav-links a:hover{opacity:1;}
+  .nav-links a.active{opacity:1;color:var(--gold);}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;
+    font-weight:700;font-size:0.9rem;
+    border:none;cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-gold{background:var(--gold);color:var(--navy-deep);position:relative;overflow:hidden;}
+  .btn-gold::after{
+    content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform:skewX(-20deg);transition:left 0.55s ease;
+  }
+  .btn-gold:hover::after{left:130%;}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,214,57,0.35);}
+
+  /* PAGE HEADER */
+  .faq-hero{
+    background:radial-gradient(ellipse at 20% -10%, #1B2670 0%, var(--navy) 55%, var(--navy-deep) 100%);
+    color:var(--cream);padding:56px 0 44px;text-align:center;
+  }
+  .faq-hero .kicker{
+    font-family:'IBM Plex Mono';font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--sky);margin-bottom:14px;display:inline-block;
+  }
+  .faq-hero h1{font-size:2.1rem;font-weight:700;margin-bottom:10px;}
+  .faq-hero p{opacity:0.8;max-width:520px;margin:0 auto;}
+  .back-link{
+    display:inline-flex;align-items:center;gap:6px;color:var(--sky);
+    font-size:0.88rem;font-weight:600;margin-top:22px;opacity:0.9;
+  }
+  .back-link:hover{opacity:1;}
+
+
+  /* SHARE + BACK */
+  .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+  .hero-actions .pill{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    padding:9px 18px;border-radius:999px;font-family:'Inter',sans-serif;font-size:0.86rem;font-weight:600;
+    color:var(--cream);background:rgba(255,255,255,0.08);border:1.5px solid var(--line);
+    transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .hero-actions .pill:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--gold);}
+  .hero-actions .pill svg{width:16px;height:16px;fill:currentColor;}
+  .share-toast{
+    position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:100;
+    background:var(--navy-deep);color:var(--cream);padding:12px 20px;border-radius:12px;
+    font-size:0.88rem;font-weight:500;box-shadow:0 12px 30px rgba(10,18,54,0.35);
+    opacity:0;pointer-events:none;transition:opacity 0.25s ease, transform 0.25s ease;max-width:90vw;text-align:center;
+  }
+  .share-toast.show{opacity:1;transform:translate(-50%,0);}
+
+
+
+  /* GENERAL CLEANING PAGE */
+  :root{--blue:#0B63F6;--tint:#EAF1FC;--tint-line:#D6E4FA;}
+  .gc-wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+  .gc-intro{padding:46px 0 8px;text-align:center;}
+  .gc-script{font-family:'Baloo 2';font-style:italic;font-weight:600;color:#2A6FE8;font-size:1.3rem;margin-bottom:10px;}
+  .gc-lead{font-size:1.05rem;max-width:640px;margin:0 auto 18px;color:#3A4268;}
+  .gc-trust{
+    display:inline-block;background:var(--gold);color:var(--navy-deep);font-weight:700;font-size:0.9rem;
+    padding:9px 20px;border-radius:999px;
+  }
+  .gc-trustbar{text-align:center;padding:20px 0 0;}
+  .fine.sop{background:#EAF1FC;border-color:#D6E4FA;color:#1F2A5C;margin-bottom:0;}
+  .gc-sec{padding:44px 0 0;}
+  .gc-kicker{display:block;text-align:center;font-family:'IBM Plex Mono';font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;font-weight:600;}
+  .gc-h2{text-align:center;font-size:1.85rem;color:var(--navy);line-height:1.15;margin-bottom:10px;}
+  .gc-sub{text-align:center;max-width:620px;margin:0 auto 22px;color:#3A4268;font-size:0.97rem;}
+  .ico{flex-shrink:0;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;}
+  .ico svg{width:23px;height:23px;}
+  .ico.gold{background:var(--gold);color:var(--navy-deep);}
+  .ico.soft{background:#fff;color:var(--blue);box-shadow:0 2px 8px rgba(11,99,246,0.15);}
+  /* signature inclusions */
+  .sig{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);color:var(--cream);
+    border-radius:24px;padding:30px 26px;box-shadow:0 14px 34px rgba(10,18,54,0.22);
+  }
+  .sig .gc-kicker{color:var(--sky);}
+  .sig .gc-h2{color:var(--gold);}
+  .sig .gc-sub{color:rgba(245,243,234,0.82);}
+  .sig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .sig-card{background:rgba(255,255,255,0.08);border:1px solid var(--line);border-radius:18px;padding:20px;}
+  .sig-card h3{font-size:1.1rem;color:var(--cream);margin:12px 0 6px;line-height:1.25;}
+  .sig-card p{font-size:0.9rem;color:rgba(245,243,234,0.8);}
+  .sig-grid.three{grid-template-columns:repeat(3,1fr);}
+  .sig-free{
+    margin-top:16px;text-align:center;font-size:0.92rem;color:var(--cream);
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+  .sig-free strong{color:var(--gold);}
+  /* inclusions */
+  .inc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .inc-card{background:var(--tint);border:1px solid var(--tint-line);border-radius:18px;padding:20px;}
+  .inc-card.wide{grid-column:1/-1;}
+  .inc-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .inc-head h3{font-size:1.1rem;color:var(--navy);line-height:1.2;}
+  .inc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .inc-list li{position:relative;padding-left:26px;font-size:0.92rem;color:#2D355C;}
+  .inc-list li::before{
+    content:'';position:absolute;left:0;top:3px;width:17px;height:17px;border-radius:50%;
+    background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/11px no-repeat;
+  }
+  .inc-list li.free::after{
+    content:'FREE';margin-left:8px;font-family:'IBM Plex Mono';font-size:0.66rem;font-weight:600;
+    background:var(--gold);color:var(--navy-deep);padding:2px 7px;border-radius:6px;vertical-align:1px;
+  }
+  /* scope guard */
+  .scope{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .scope-card{background:#fff;border:1px solid #E4E1D3;border-radius:18px;padding:20px;}
+  .scope-card h3{font-size:1.05rem;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+  .scope-card h3 .ico{width:34px;height:34px;} .scope-card h3 .ico svg{width:17px;height:17px;}
+  .ico.red{background:#D9534F;color:#fff;} .ico.amber{background:#E9A62B;color:#fff;}
+  .scope-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .scope-list li{font-size:0.9rem;color:#2D355C;padding-left:18px;position:relative;}
+  .scope-list li::before{content:'';position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:#B9B39A;}
+  .fine{
+    margin-top:14px;background:#FFF7DC;border:1px solid #F3E4A8;border-radius:14px;padding:16px 20px;
+    font-size:0.88rem;color:#6B5A12;
+  }
+  /* before we arrive */
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .steps .step:last-child:nth-child(odd){grid-column:1/-1;}
+  .step{display:flex;gap:14px;align-items:flex-start;background:var(--tint);border:1px solid var(--tint-line);border-radius:16px;padding:16px 18px;font-size:0.92rem;color:#2D355C;}
+  .step::before{
+    counter-increment:s;content:counter(s);flex-shrink:0;width:30px;height:30px;border-radius:50%;
+    background:var(--navy);color:var(--gold);font-family:'Baloo 2';font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .step strong{display:block;color:var(--navy);margin-bottom:2px;}
+  /* CTA */
+  .gc-cta{margin:44px 0 72px;display:flex;flex-direction:column;gap:12px;align-items:stretch;}
+  .quote-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--navy-deep);border-radius:999px;
+    padding:16px 24px;font-family:'Baloo 2';font-weight:700;font-size:1.1rem;transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .quote-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,214,57,0.45);}
+  .quote-btn svg{width:20px;height:20px;}
+  .alt-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:0.9rem;font-weight:600;}
+  .alt-links a{color:var(--blue);}
+  .alt-links a:hover{text-decoration:underline;}
+  @media (max-width:640px){
+    .sig-grid,.sig-grid.three,.inc-grid,.scope,.steps{grid-template-columns:1fr;}
+    .gc-h2{font-size:1.5rem;} .sig{padding:24px 18px;}
+    .price-table td{padding:10px 12px;font-size:0.84rem;}
+  }
+  .price-table{
+    width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;
+    border:1px solid #E4E1D3;margin-bottom:18px;
+  }
+  .price-table caption{
+    text-align:left;font-family:'Baloo 2';font-weight:700;font-size:1rem;
+    color:var(--navy);background:#EFEBDC;padding:12px 18px;caption-side:top;
+  }
+  .price-table td{padding:12px 18px;font-size:0.9rem;border-top:1px solid #EEEBDE;}
+  .price-table td:last-child{text-align:right;font-family:'IBM Plex Mono';font-weight:600;color:var(--navy);white-space:nowrap;}
+  .price-table td.pt-note{font-size:0.82rem;font-style:italic;color:#6B7094;text-align:left;font-family:'Inter',sans-serif;font-weight:500;white-space:normal;}
+  .price-note{
+    background:#FFF7DC;border:1px solid #F3E4A8;border-radius:14px;padding:18px 20px;
+    font-size:0.86rem;color:#6B5A12;
+  }
+  .price-note ul{padding-left:18px;margin-top:6px;}
+
+
+  /* PHOTO CAROUSEL */
+  .gc-gallery{padding-top:34px;}
+  .gcs-frame{position:relative;border-radius:22px;overflow:hidden;border:3px solid #fff;background:#fff;box-shadow:0 12px 30px rgba(18,27,78,0.18);}
+  .gcs-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .gcs-track::-webkit-scrollbar{display:none;}
+  .gcs-slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;aspect-ratio:16/9;background:#EEF1F6;}
+  .gcs-slide img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;}
+  .gcs-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:38px;height:38px;border-radius:50%;
+    background:rgba(10,18,54,0.62);border:1.5px solid rgba(255,255,255,0.6);color:#fff;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;padding:0;transition:background 0.15s ease, opacity 0.15s ease;
+  }
+  .gcs-arrow:hover{background:rgba(10,18,54,0.9);}
+  .gcs-arrow[disabled]{opacity:0.25;cursor:default;}
+  .gcs-arrow svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
+  .gcs-arrow.prev{left:10px;} .gcs-arrow.next{right:10px;}
+  .gcs-dots{display:flex;justify-content:center;gap:8px;margin-top:14px;}
+  .gcs-dot{width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;background:#C9CDDB;transition:background 0.2s ease, width 0.2s ease;}
+  .gcs-dot.active{background:var(--navy);width:24px;border-radius:6px;}
+  @media (max-width:640px){
+    .gcs-frame{border-radius:18px;}
+    .gcs-arrow{width:32px;height:32px;} .gcs-arrow.prev{left:8px;} .gcs-arrow.next{right:8px;}
+  }
+
+  /* FOOTER (shared look) */
+  footer{background:var(--navy);color:var(--cream);padding:44px 0 28px;margin-top:0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-brand{font-family:'Baloo 2';font-weight:700;color:var(--gold);}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:0.85rem;opacity:0.8;}
+  .foot-bottom{
+    text-align:center;font-size:0.78rem;opacity:0.5;margin-top:26px;
+    font-family:'IBM Plex Mono';
+  }
+
+  @media (max-width:820px){
+    .discount-banner{flex-direction:column;text-align:center;padding:18px;}
+    .discount-banner .btn{width:100%;justify-content:center;}
+
+    .nav-links{
+      position:absolute;top:72px;left:0;right:0;background:var(--navy);
+      flex-direction:column;align-items:flex-start;padding:8px 24px 18px;
+      display:none;border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{width:100%;padding:12px 0;border-bottom:1px solid var(--line);font-size:1rem;}
+    .nav-links a:last-child{border-bottom:none;}
+    .nav-toggle{display:flex;}
+    .faq-hero h1{font-size:1.7rem;}
+  }
+  @media (min-width:821px){
+    .nav-toggle{display:none;}
+  }
+  .nav-toggle{
+    background:transparent;border:none;cursor:pointer;padding:8px;
+    flex-direction:column;gap:5px;
+  }
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--cream);border-radius:2px;transition:transform 0.2s ease, opacity 0.2s ease;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-right{display:flex;align-items:center;gap:10px;}
+
+  /* spacing polish (mobile) */
+  @media (max-width:820px){
+    .faq-hero{padding:36px 0 30px;}
+    .faq-hero .kicker{margin-bottom:10px;}
+    .faq-hero h1{margin-bottom:8px;}
+    .hero-actions{margin-top:20px;gap:10px;}
+    .hero-actions .pill{padding:8px 16px;}
+  }
+
+  @media (max-width:820px){
+    .gc-intro{padding:28px 0 0;}
+    .gc-script{margin-bottom:8px;}
+    .gc-lead{margin-bottom:0;font-size:1rem;}
+    .gc-gallery{padding-top:22px;}
+    .gc-trustbar{padding-top:16px;}
+    .gc-sec{padding-top:36px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.jpeg" alt="Clean Fresh Co."></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="deep-cleaning.html" class="active">Deep Cleaning</a>
+      <a href="general-cleaning.html">General Cleaning</a>
+      <a href="faq.html">FAQs</a>
+      <a href="index.html#book">Book now</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://m.me/522847734243823" target="_blank" rel="noopener" class="btn btn-gold">Book a Cleaning</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="faq-hero">
+  <div class="wrap">
+    <span class="kicker">● Clean Fresh Co.</span>
+    <h1>Deep Cleaning</h1>
+    <p>Everything you can expect from our Deep Cleaning service.</p>
+    <div class="hero-actions">
+      <button type="button" class="pill" data-back><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z"/></svg> Back</button>
+      <button type="button" class="pill" data-share><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg> Share</button>
+      <a href="index.html" class="pill">Home</a>
+    </div>
+  </div>
+</section>
+
+<section class="gc-intro">
+  <div class="gc-wrap">
+    <p class="gc-script">Hindi lang linis.. deep clean talaga.</p>
+    <p class="gc-lead">Most cleanings stop at the surface. We go deep, removing stains, dirt, bacteria, and odor trapped inside your upholstery. This page covers everything you can expect from our Deep Cleaning service, from how we clean to how we price it.</p>
+  </div>
+</section>
+
+<section class="gc-sec gc-gallery" id="photos">
+  <div class="gc-wrap">
+    <div class="gcs" data-gcs>
+      <div class="gcs-frame">
+        <button type="button" class="gcs-arrow prev" aria-label="Previous photo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="gcs-arrow next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="gcs-track">
+        <div class="gcs-slide"><img src="assets/dc/1.jpg" alt="Dry vacuum removes deep dirt and dust mites" draggable="false"></div>
+        <div class="gcs-slide"><img src="assets/dc/2.jpg" alt="Brushing and shampooing breaks down stains and odors" loading="lazy" draggable="false"></div>
+        <div class="gcs-slide"><img src="assets/dc/3.jpg" alt="Extraction and blow-drying" loading="lazy" draggable="false"></div>
+        <div class="gcs-slide"><img src="assets/dc/4.jpg" alt="High-pressure steaming kills allergens and bed bugs" loading="lazy" draggable="false"></div>
+        <div class="gcs-slide"><img src="assets/dc/5.jpg" alt="Actual dirty water taken from the item" loading="lazy" draggable="false"></div>
+        <div class="gcs-slide"><img src="assets/dc/6.jpg" alt="Actual upholstery shampoo, commercial-grade machines and specialized solutions" loading="lazy" draggable="false"></div>
+        </div>
+      </div>
+      <div class="gcs-dots"><button type="button" class="gcs-dot active" aria-label="Show photo 1"></button><button type="button" class="gcs-dot" aria-label="Show photo 2"></button><button type="button" class="gcs-dot" aria-label="Show photo 3"></button><button type="button" class="gcs-dot" aria-label="Show photo 4"></button><button type="button" class="gcs-dot" aria-label="Show photo 5"></button><button type="button" class="gcs-dot" aria-label="Show photo 6"></button></div>
+    </div>
+  </div>
+</section>
+
+<section class="gc-trustbar">
+  <div class="gc-wrap">
+    <span class="gc-trust">Trusted by home/business owners in Metro Manila</span>
+  </div>
+</section>
+
+<section class="gc-sec" id="difference">
+  <div class="gc-wrap">
+    <div class="sig">
+      <span class="gc-kicker">What sets us apart</span>
+      <h2 class="gc-h2">Done right, priced complete</h2>
+      <p class="gc-sub">Three things we never compromise on when we deep clean your furniture.</p>
+      <div class="sig-grid three">
+        <div class="sig-card">
+          <span class="ico gold"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v3l1.5 2v13a2 2 0 01-2 2h-3a2 2 0 01-2-2V7L10 5zM8.5 12h7"/></svg></span>
+          <h3>Actual upholstery shampoo</h3>
+          <p>We use real upholstery shampoo made for fabric, not laundry soap.</p>
+        </div>
+        <div class="sig-card">
+          <span class="ico gold"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 001.7 3h10.6A2 2 0 0019 18l-5-9V3M7.5 15h9"/></svg></span>
+          <h3>Specialized branded solutions</h3>
+          <p>On top of the shampoo, we use other specialized, branded solutions to help remove stains.</p>
+        </div>
+        <div class="sig-card">
+          <span class="ico gold"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 011-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.3"/><path d="M12 10l-3 3 2 2"/></svg></span>
+          <h3>Complete pricing</h3>
+          <p>No additional or surprising fees just to get your item fully cleaned.</p>
+        </div>
+      </div>
+      <p class="sig-free">Your listed price covers the full process: shampoo, solutions, extraction, steaming, and blow-drying. Pricing follows the item size verified on-site, and the transportation fee depends on your location.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gc-sec" id="inclusions">
+  <div class="gc-wrap">
+    <span class="gc-kicker">What to expect</span>
+    <h2 class="gc-h2">How we deep clean your item</h2>
+    <p class="gc-sub">Every Deep Cleaning follows the same thorough process, using commercial-grade vacuums and steamers.</p>
+    <div class="inc-grid">
+      <div class="inc-card">
+        <div class="inc-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h10l2-8h4M4 20l1-9a4 4 0 014-4h3M12 7V4h3M19 12V8"/><circle cx="7" cy="20" r="1.4"/><circle cx="13" cy="20" r="1.4"/></svg></span><h3>1. Dry vacuum</h3></div>
+        <ul class="inc-list">
+          <li>Removes deep dirt and dust mites</li>
+          <li>Commercial-grade vacuums</li>
+        </ul>
+      </div>
+      <div class="inc-card">
+        <div class="inc-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-8 8-4-1-1-4zM4 21l3-3M16 8l-8 8"/></svg></span><h3>2. Brushing &amp; shampooing</h3></div>
+        <ul class="inc-list">
+          <li>Breaks down stains and odors</li>
+          <li>Actual upholstery shampoo</li>
+          <li>Specialized branded solutions to help remove stains</li>
+        </ul>
+      </div>
+      <div class="inc-card">
+        <div class="inc-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 15a2.5 2.5 0 002.5 2.5"/></svg></span><h3>3. Extraction &amp; blow-drying</h3></div>
+        <ul class="inc-list">
+          <li>Pulls trapped dirt and dirty water out of the fabric</li>
+          <li>Blow-drying is included, so your item is usually ready to use the same day</li>
+        </ul>
+      </div>
+      <div class="inc-card">
+        <div class="inc-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4c-1.5 1.5 1.5 3 0 5s1.5 3 0 5M13 4c-1.5 1.5 1.5 3 0 5s1.5 3 0 5M18 4c-1.5 1.5 1.5 3 0 5s1.5 3 0 5M4 19h16"/></svg></span><h3>4. High-pressure steaming</h3></div>
+        <ul class="inc-list">
+          <li>High-temperature steam sanitation</li>
+          <li>Helps kill allergens and bed bugs</li>
+          <li>Commercial-grade steamers</li>
+        </ul>
+      </div>
+      <div class="inc-card wide">
+        <div class="inc-head"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8c-2 0-4-1-4-3a2 2 0 014-.5M12 8c2 0 4-1 4-3a2 2 0 00-4-.5"/></svg></span><h3>Includes freebies</h3></div>
+        <ul class="inc-list">
+          <li class="free">Toilet bowl cleaner tablets and antibac disinfectant fogging with every deep cleaning booking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gc-sec" id="scope">
+  <div class="gc-wrap">
+    <span class="gc-kicker">Please be guided</span>
+    <h2 class="gc-h2">Scope &amp; guidelines</h2>
+    <p class="gc-sub">So there are no surprises on the day, here is what to expect from a Deep Cleaning.</p>
+    <div class="scope">
+      <div class="scope-card">
+        <h3><span class="ico amber"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span>Quoted or adjusted on-site</h3>
+        <ul class="scope-list">
+          <li>Items bigger than the listed sizes are quoted individually</li>
+          <li>Final pricing may vary based on the actual item size verified on-site</li>
+          <li>Pull-out, extension, or L-shaped sofas and pillows are priced as listed</li>
+          <li>Transportation fee depends on your location</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h3><span class="ico amber"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h11a3 3 0 10-3-3M3 12h16a3 3 0 11-3 3M3 16h8a3 3 0 11-3 3"/></svg></span>Drying</h3>
+        <ul class="scope-list">
+          <li>Blow-drying is included in our cleaning process</li>
+          <li>100% dryness is not guaranteed, as heavily soiled items may need multiple shampooing passes, which can affect drying time</li>
+          <li>Final drying time depends on the fabric and its condition</li>
+          <li>Please allow air-dry time after deep shampooing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine sop"><strong>Our Standard Operating Procedure (SOP):</strong> Before we leave, we ask you to inspect the work and approve it. We will address any concerns on the spot, within the agreed scope, until you are satisfied. Concerns after we’ve left are handled case by case and by approval, so please let us know the same day.</div>
+    <div class="fine"><strong>Discoloration note:</strong> Results depend on the fabric&rsquo;s raw material, the item&rsquo;s age, and the stain&rsquo;s age and nature. Some stains or chemical-related discoloration may be permanent and cannot be fully removed through deep cleaning. We will still perform the agreed deep cleaning service, but in some cases, professional restoration or reupholstery may be needed.</div>
+  </div>
+</section>
+
+<section class="gc-sec" id="before">
+  <div class="gc-wrap">
+    <span class="gc-kicker">Preparing for your booking</span>
+    <h2 class="gc-h2">Before we arrive</h2>
+    <p class="gc-sub">A few quick steps help us give you an accurate quote and a smooth cleaning day.</p>
+    <div class="steps">
+      <div class="step"><div><strong>Send a photo of the item</strong>It helps us assess the fabric and its condition, and quote accurately.</div></div>
+      <div class="step"><div><strong>Tell us the type and size</strong>For example, the bed size, the number of seats, or the carpet dimensions.</div></div>
+      <div class="step"><div><strong>Prepare the space</strong>Please clear the area around the item and make sure we have access to water and electricity.</div></div>
+      <div class="step"><div><strong>Allow air-dry time</strong>Raw material and fabric type may affect drying time after deep shampooing.</div></div>
+      <div class="step"><div><strong>Share your schedule</strong>Let us know about any meeting or time limit, and assign someone to be present if you’ll be away.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="gc-sec" id="pricelist">
+  <div class="gc-wrap">
+    <span class="gc-kicker">Pricelist</span>
+    <h2 class="gc-h2">Deep Cleaning rates</h2>
+    <p class="gc-sub">Rates are based on the type and size of your item. Complete pricing, with no hidden fees.</p>
+    <table class="price-table">
+      <caption>Bed / Mattress Deep Cleaning</caption>
+      <tr><td>King</td><td>₱2,200</td></tr>
+      <tr><td>Queen</td><td>₱1,800</td></tr>
+      <tr><td>Double / Full</td><td>₱1,550</td></tr>
+      <tr><td>Single / Twin</td><td>₱1,200</td></tr>
+      <tr><td>Bigger than King</td><td>To be quoted</td></tr>
+    </table>
+    <table class="price-table">
+      <caption>Carpet Deep Cleaning</caption>
+      <tr><td>Small 90 × 150 cm</td><td>₱1,200</td></tr>
+      <tr><td>Medium 150 × 210 cm</td><td>₱1,900</td></tr>
+      <tr><td>Large 180 × 270 cm</td><td>₱2,450</td></tr>
+      <tr><td>Bigger than large</td><td>To be quoted</td></tr>
+      <tr><td>Carpeted flooring</td><td>Starts at ₱100/sqm</td></tr>
+    </table>
+    <table class="price-table">
+      <caption>Sofa / Couches Deep Cleaning</caption>
+      <tr><td>5-seater</td><td>₱2,700</td></tr>
+      <tr><td>4-seater</td><td>₱2,200</td></tr>
+      <tr><td>3-seater</td><td>₱1,650</td></tr>
+      <tr><td>2-seater</td><td>₱1,200</td></tr>
+      <tr><td>Bigger than 5-seater</td><td>To be quoted</td></tr>
+      <tr><td>Pull-out / extension / L-shaped</td><td>+₱500</td></tr>
+      <tr><td>Pillow, per piece</td><td>₱100–₱200</td></tr>
+    </table>
+    <table class="price-table">
+      <caption>Other Items</caption>
+      <tr><td>Dining / office chair (fabric)</td><td>₱350</td></tr>
+      <tr><td>1-seater sofa</td><td>₱550–₱800</td></tr>
+      <tr><td>Ottomans / elongated</td><td>₱550–₱1,500</td></tr>
+      <tr><td>Accent chairs</td><td>₱800–₱2,000</td></tr>
+      <tr><td>Baby or pet strollers</td><td>₱1,200–₱2,500</td></tr>
+      <tr><td>Spa / recliner / gaming chair</td><td>₱1,000–₱2,500</td></tr>
+    </table>
+    <div class="price-note">
+      <strong>Good to know:</strong>
+      <ul>
+        <li>Minimum starts at ₱2,500–₱3,000 plus transportation fee</li>
+        <li>Raw material / fabric type may affect drying time</li>
+        <li>Send a photo of the item if possible</li>
+        <li>Allow air-dry time after deep shampooing</li>
+        <li><strong>Pricing Note:</strong> Final pricing may vary based on the actual item size verified on-site.</li>
+      </ul>
+    </div>
+    <div class="gc-cta">
+      <a class="quote-btn" href="https://m.me/522847734243823" target="_blank" rel="noopener">Book a Deep Cleaning <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="alt-links"><a href="pricing.html?tab=deep">View on the Pricing page</a><a href="faq.html">Read our FAQs</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="share-toast" id="shareToast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">Clean Fresh Co.</div>
+    <div class="foot-links">
+      <a href="index.html#services">Services</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="deep-cleaning.html">Deep Cleaning</a>
+      <a href="general-cleaning.html">General Cleaning</a>
+      <a href="index.html#book">Book</a>
+      <a href="faq.html">FAQs</a>
+      <a href="https://www.facebook.com/cleanfreshcodeepcleaning/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/_cleanfreshco/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-bottom">cleanfreshcoph@gmail.com · +63 995 412 6945<br>Serving condos, homes &amp; businesses across Metro Manila</div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+
+  /* Swipable photos */
+  (function(){
+    const box = document.querySelector('[data-gcs]');
+    if (!box) return;
+    const track = box.querySelector('.gcs-track');
+    const n = track.children.length;
+    const dots = [...box.querySelectorAll('.gcs-dot')];
+    const prev = box.querySelector('.gcs-arrow.prev');
+    const next = box.querySelector('.gcs-arrow.next');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let idx = 0, touched = false, timer = null;
+    const go = i => track.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+    const sync = () => {
+      idx = Math.round(track.scrollLeft / track.clientWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      prev.disabled = idx === 0; next.disabled = idx === n - 1;
+    };
+    track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+    prev.addEventListener('click', () => { touched = true; go(idx - 1); });
+    next.addEventListener('click', () => { touched = true; go(idx + 1); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { touched = true; go(i); }));
+    box.addEventListener('pointerdown', () => { touched = true; });
+    if (!reduce && 'IntersectionObserver' in window) {
+      const stop = () => { clearInterval(timer); timer = null; };
+      const start = () => { if (!timer && !touched) timer = setInterval(() => { if (touched) return stop(); go(idx === n - 1 ? 0 : idx + 1); }, 5000); };
+      new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: 0.5 }).observe(box);
+    }
+    window.addEventListener('resize', () => track.scrollTo({ left: idx * track.clientWidth }));
+  })();
+
+  /* Share to Facebook Messenger */
+  (function(){
+    const toast = document.getElementById('shareToast');
+    let t;
+    function say(msg){
+      toast.textContent = msg; toast.classList.add('show');
+      clearTimeout(t); t = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+    function copy(text){
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise((res, rej) => {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy') ? res() : rej(); } catch(e){ rej(e); }
+        document.body.removeChild(ta);
+      });
+    }
+    document.querySelectorAll('[data-share]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const url = location.href.split('#')[0] + (location.hash || '');
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (isMobile) {
+          // Opens the Messenger app's share screen
+          window.location.href = 'fb-messenger://share/?link=' + encodeURIComponent(url);
+          // If the app isn't installed, fall back to the native share sheet / copy
+          setTimeout(async () => {
+            if (document.hidden) return;
+            if (navigator.share) { try { await navigator.share({ title: document.title, url }); } catch(e){} }
+            else { copy(url).then(() => say('Link copied — paste it in Messenger')).catch(() => say(url)); }
+          }, 1200);
+        } else {
+          copy(url).then(() => say('Link copied — paste it in Messenger')).catch(() => say(url));
+          window.open('https://www.messenger.com/', '_blank', 'noopener');
+        }
+      });
+    });
+  })();
+
+  /* Back to previous page */
+  document.querySelectorAll('[data-back]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sameSite = document.referrer && new URL(document.referrer).origin === location.origin;
+      if (sameSite && history.length > 1) history.back();
+      else if (history.length > 1 && !document.referrer) history.back();
+      else location.href = 'index.html';
+    });
+  });
+</script>
+
+</body>
+</html>
