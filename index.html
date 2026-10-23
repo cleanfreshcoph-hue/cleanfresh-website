@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clean Fresh Co. — Deep Cleaning Services, Metro Manila</title>
+<meta name="description" content="Sofa, mattress, carpet and home deep cleaning across Metro Manila. Shampoo, extraction, steam and blow-dry at your place. 5-seater sofa ₱2,700. Message us for a quote.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Clean Fresh Co.">
+<meta property="og:title" content="Clean Fresh Co. | Sofa, Mattress &amp; Carpet Deep Cleaning, Metro Manila">
+<meta property="og:description" content="Sofa, mattress, carpet and home deep cleaning across Metro Manila. Shampoo, extraction, steam and blow-dry at your place. 5-seater sofa ₱2,700. Message us for a quote.">
+<title>Clean Fresh Co. | Sofa, Mattress &amp; Carpet Deep Cleaning, Metro Manila</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -135,9 +140,16 @@
   }
   .hero h1{font-weight:700;line-height:1.14;margin-bottom:18px;}
   .hero h1 .line1,.hero h1 .line2{
-    display:block;white-space:nowrap;
-    font-size:clamp(1.05rem, 5.1vw, 2.2rem);
+    display:block;text-wrap:balance;
+    font-size:clamp(1.6rem, 6.6vw, 2.4rem);
   }
+  .hero-ctas{
+    display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 4px;
+    opacity:0;transform:translateY(16px);animation:hero-in 0.7s cubic-bezier(0.2,0.7,0.25,1) 0.4s forwards;
+  }
+  .hero-ctas .btn{min-height:48px;padding:13px 24px;font-size:0.95rem;}
+  @media (prefers-reduced-motion:reduce){ .hero-ctas{animation:none;opacity:1;transform:none;} }
+  @media (max-width:480px){ .hero-ctas .btn{width:100%;justify-content:center;} }
   .hero h1 .line2{color:var(--gold);margin-top:0.12em;}
   .hero p{font-size:1.02rem;opacity:0.82;max-width:480px;margin:0 auto 28px;}
   .hero p.hero-highlight{
@@ -240,8 +252,8 @@
   .section{padding:64px 0;}
   .section-head{max-width:640px;margin-bottom:36px;}
   .kicker{
-    font-family:'IBM Plex Mono';font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;
-    color:#6B7AA8;margin-bottom:10px;display:block;
+    font-family:'IBM Plex Mono';font-size:0.78rem;text-transform:uppercase;letter-spacing:0.08em;
+    color:#4F5B88;margin-bottom:10px;display:block;
   }
   .section h2{font-size:1.9rem;font-weight:700;color:var(--navy);line-height:1.2;}
 
@@ -330,7 +342,7 @@
   .promo-stack:hover{transform:translateY(-3px);box-shadow:0 26px 60px rgba(18,27,78,0.24);}
   .promo-stack img{width:100%;display:block;}
   .promo-fineprint{
-    text-align:center;font-size:0.78rem;color:#6B7AA8;margin-top:14px;
+    text-align:center;font-size:0.78rem;color:#4F5B88;margin-top:14px;
     font-family:'IBM Plex Mono';
   }
   .equipment-visual{
@@ -340,7 +352,7 @@
   .equipment-visual img{width:100%;display:block;}
   .savings-table thead th{
     text-align:left;font-family:'IBM Plex Mono';font-size:0.7rem;text-transform:uppercase;
-    letter-spacing:0.05em;color:#6B7AA8;padding:10px 18px;background:#FAF8F0;
+    letter-spacing:0.05em;color:#4F5B88;padding:10px 18px;background:#FAF8F0;
     border-bottom:1px solid #EEEBDE;
   }
   .savings-table thead th:not(:first-child){text-align:right;}
@@ -350,7 +362,7 @@
   .savings-table td.new{color:var(--navy);font-weight:700;}
   .savings-table td.save{background:#FFF7DC;color:#6B5A12;font-weight:700;}
   .savings-note{
-    text-align:center;font-size:0.76rem;color:#8A93B8;margin-top:14px;font-family:'IBM Plex Mono';
+    text-align:center;font-size:0.76rem;color:#5C6690;margin-top:14px;font-family:'IBM Plex Mono';
   }
 
   /* TESTIMONIALS */
@@ -485,7 +497,7 @@
     background:rgba(10,18,54,0.75);color:var(--cream);padding:3px 8px;border-radius:999px;
   }
   .scroll-hint{
-    font-family:'IBM Plex Mono';font-size:0.72rem;color:#8A93B8;
+    font-family:'IBM Plex Mono';font-size:0.72rem;color:#5C6690;
     display:flex;align-items:center;gap:6px;margin-bottom:14px;
   }
 
@@ -560,13 +572,29 @@
     footer .wrap{flex-direction:column;text-align:center;justify-content:center;}
     .foot-links{justify-content:center;flex-wrap:wrap;gap:14px 18px;}
   }
+
+  /* Larger tap areas without changing the look */
+  .nav-toggle{width:44px;height:44px;}
+  .foot-links a{display:inline-block;padding:12px 0;}
+  .foot-bottom a{text-decoration:underline;text-underline-offset:2px;}
+  .ba-dot,.gcs-dot{position:relative;}
+  .ba-dot::after,.gcs-dot::after{content:"";position:absolute;inset:-17px -4px;}
+  .ba-arrow::after,.gcs-arrow::after{content:"";position:absolute;inset:-7px;}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Clean Fresh Co.",
+"description":"Sofa, mattress, carpet and home deep cleaning and general cleaning across Metro Manila.",
+"telephone":"+639954126945","email":"cleanfreshcoph@gmail.com","priceRange":"₱1,200+",
+"areaServed":{"@type":"AdministrativeArea","name":"Metro Manila"},
+"address":{"@type":"PostalAddress","addressRegion":"Metro Manila","addressCountry":"PH"},
+"sameAs":["https://www.facebook.com/cleanfreshcodeepcleaning/","https://www.instagram.com/_cleanfreshco/"]}
+</script>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a href="#" class="brand"><img src="assets/logo.jpeg" alt="Clean Fresh Co."></a>
+    <a href="index.html" class="brand"><img src="assets/logo.jpeg" alt="Clean Fresh Co."></a>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="pricing.html">Pricing</a>
@@ -590,8 +618,12 @@
   <div class="wrap">
     <div class="hero-text">
       <span class="eyebrow">● Deep Cleaning Services · Metro Manila</span>
-      <h1><span class="line1">Save Thousands. Don't Replace It.</span><span class="line2">Let us Restore it!</span></h1>
-      <p class="hero-lead">Restore it at a much lower cost than buying a new one</p>
+      <h1><span class="line1">Deep-clean your <span style="white-space:nowrap">5-seater</span> sofa for ₱2,700.</span><span class="line2">A new one costs ₱38,000.</span></h1>
+      <p class="hero-lead">We shampoo, extract, steam and blow-dry sofas, mattresses and carpets at your place. Most items are ready to use the same day.</p>
+      <div class="hero-ctas">
+        <a href="https://m.me/522847734243823" target="_blank" rel="noopener" class="btn btn-gold">Get a Quote on Messenger</a>
+        <a href="tel:+639954126945" class="btn btn-ghost">Call 0995 412 6945</a>
+      </div>
       <div class="hero-strip">
       <div class="ba-row" data-ba-row aria-label="Before and after: upholstery">
         <div class="ba-frame">
@@ -599,8 +631,8 @@
           <button type="button" class="ba-arrow next" aria-label="Next example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
           <div class="ba-track">
             <div class="ba-slide">
-              <img src="assets/ba/1-after.jpg" alt="After: Sofa deep cleaning" loading="lazy" draggable="false">
-              <img class="ba-before" src="assets/ba/1-before.jpg" alt="Before: Sofa deep cleaning" loading="lazy" draggable="false">
+              <img src="assets/ba/1-after.jpg" fetchpriority="high" alt="After: Sofa deep cleaning" draggable="false">
+              <img class="ba-before" src="assets/ba/1-before.jpg" fetchpriority="high" alt="Before: Sofa deep cleaning" draggable="false">
               <div class="ba-line"></div>
               <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
               <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
@@ -629,8 +661,8 @@
           <button type="button" class="ba-arrow next" aria-label="Next example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
           <div class="ba-track">
             <div class="ba-slide">
-              <img src="assets/ba/4-after.jpg" alt="After: Room general cleaning" loading="lazy" draggable="false">
-              <img class="ba-before" src="assets/ba/4-before.jpg" alt="Before: Room general cleaning" loading="lazy" draggable="false">
+              <img src="assets/ba/4-after.jpg" fetchpriority="high" alt="After: Room general cleaning" draggable="false">
+              <img class="ba-before" src="assets/ba/4-before.jpg" fetchpriority="high" alt="Before: Room general cleaning" draggable="false">
               <div class="ba-line"></div>
               <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
               <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
@@ -664,7 +696,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">What we do</span>
-      <h2>From homes to offices, and commercial spaces, we keep every space clean, fresh, and well-maintained.</h2>
+      <h2>Sofas, mattresses, carpets and whole homes, cleaned at your place.</h2>
     </div>
     <div class="services-grid">
       <div class="service-card">
@@ -767,7 +799,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Commercial work</span>
-      <h2>Restaurants, gyms, offices — we clean it all.</h2>
+      <h2>From restaurant dining chairs to whole commercial spaces.</h2>
     </div>
     <div class="gallery-scroll">
 
@@ -827,10 +859,10 @@
         <tr><th>Item</th><th>Brand New</th><th>Deep Clean</th><th>You Save</th></tr>
       </thead>
       <tbody>
-        <tr><td>5-Seater Sofa</td><td class="old">₱38,000</td><td class="new">₱2,700</td><td class="save count-up" data-target="35300">₱0</td></tr>
-        <tr><td>Large Carpet</td><td class="old">₱18,000</td><td class="new">₱2,450</td><td class="save count-up" data-target="15550">₱0</td></tr>
-        <tr><td>Queen Bed</td><td class="old">₱12,000</td><td class="new">₱1,800</td><td class="save count-up" data-target="10200">₱0</td></tr>
-        <tr><td>4x Dining Chairs</td><td class="old">₱10,000</td><td class="new">₱1,400</td><td class="save count-up" data-target="8600">₱0</td></tr>
+        <tr><td>5-Seater Sofa</td><td class="old">₱38,000</td><td class="new">₱2,700</td><td class="save count-up" data-target="35300">₱35,300</td></tr>
+        <tr><td>Large Carpet</td><td class="old">₱18,000</td><td class="new">₱2,450</td><td class="save count-up" data-target="15550">₱15,550</td></tr>
+        <tr><td>Queen Bed</td><td class="old">₱12,000</td><td class="new">₱1,800</td><td class="save count-up" data-target="10200">₱10,200</td></tr>
+        <tr><td>4x Dining Chairs</td><td class="old">₱10,000</td><td class="new">₱1,400</td><td class="save count-up" data-target="8600">₱8,600</td></tr>
       </tbody>
     </table>
     <div class="section-cta"><a href="pricing.html" class="btn btn-gold">See Pricing</a></div>
@@ -921,9 +953,9 @@
         <a href="https://m.me/522847734243823" target="_blank" rel="noopener" class="btn btn-gold">Book a Cleaning</a>
       </div>
       <div class="contact-line">
-        <span>cleanfreshcoph@gmail.com</span>
+        <a href="mailto:cleanfreshcoph@gmail.com">cleanfreshcoph@gmail.com</a>
         <span class="dot-sep">·</span>
-        <span>+63 995 412 6945</span>
+        <a href="tel:+639954126945">+63 995 412 6945</a>
       </div>
       <div class="social-line">
         Follow us for cleaning tips &amp; before/afters —
@@ -950,7 +982,7 @@
     </div>
   </div>
   <div class="wrap">
-    <div class="foot-bottom">cleanfreshcoph@gmail.com · +63 995 412 6945<br>Serving condos, homes &amp; businesses across Metro Manila</div>
+    <div class="foot-bottom"><a href="mailto:cleanfreshcoph@gmail.com">cleanfreshcoph@gmail.com</a> · <a href="tel:+639954126945">+63 995 412 6945</a><br>Serving condos, homes &amp; businesses across Metro Manila</div>
   </div>
 </footer>
 
@@ -1058,7 +1090,7 @@
   }
 
   /* Subtle 3D tilt on portfolio photo cards */
-  if (window.matchMedia('(pointer:fine)').matches) {
+  if (window.matchMedia('(pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('.cs-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const r = card.getBoundingClientRect();
@@ -1110,7 +1142,7 @@
 
   /* Count up the peso savings once they scroll into view */
   const counters = document.querySelectorAll('.count-up');
-  if (counters.length) {
+  if (counters.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const fmt = (n) => '₱' + Math.round(n).toLocaleString('en-PH');
     const animateCount = (el) => {
       const target = parseFloat(el.dataset.target);
@@ -1132,7 +1164,7 @@
         }
       });
     }, { threshold: 0.4 });
-    counters.forEach(c => obs.observe(c));
+    counters.forEach(c => { c.textContent = '₱0'; obs.observe(c); });
   }
 </script>
 
