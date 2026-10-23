@@ -581,6 +581,13 @@
   .ba-dot::after,.gcs-dot::after{content:"";position:absolute;inset:-17px -4px;}
   .ba-arrow::after,.gcs-arrow::after{content:"";position:absolute;inset:-7px;}
 
+  /* Second before/after row, below the services */
+  .results-band{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);border-radius:24px;padding:36px 24px 30px;}
+  .results-band .offer-head{margin-bottom:22px;}
+  .section .results-band h2{color:var(--gold);}
+  .results-band .kicker{color:var(--sky);}
+  .results-band .ba-row{max-width:640px;margin:0 auto;}
+  @media (max-width:480px){ .results-band{padding:26px 14px 22px;border-radius:18px;} }
   /* Sticky mobile booking bar */
   .mbar{display:none;}
   @media (max-width:820px){
@@ -672,36 +679,6 @@
         </div>
         <div class="ba-dots"><button type="button" class="ba-dot active" aria-label="Show example 1"></button><button type="button" class="ba-dot" aria-label="Show example 2"></button><button type="button" class="ba-dot" aria-label="Show example 3"></button></div>
       </div>
-      <div class="ba-row" data-ba-row aria-label="Before and after: rooms and mattresses">
-        <div class="ba-frame">
-          <button type="button" class="ba-arrow prev" aria-label="Previous example" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <button type="button" class="ba-arrow next" aria-label="Next example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          <div class="ba-track">
-            <div class="ba-slide">
-              <img src="assets/ba/4-after.jpg" fetchpriority="high" alt="After: Room general cleaning" draggable="false">
-              <img class="ba-before" src="assets/ba/4-before.jpg" fetchpriority="high" alt="Before: Room general cleaning" draggable="false">
-              <div class="ba-line"></div>
-              <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-              <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
-            </div>
-            <div class="ba-slide">
-              <img src="assets/ba/5-after.jpg" alt="After: Mattress deep cleaning" loading="lazy" draggable="false">
-              <img class="ba-before" src="assets/ba/5-before.jpg" alt="Before: Mattress deep cleaning" loading="lazy" draggable="false">
-              <div class="ba-line"></div>
-              <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-              <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
-            </div>
-            <div class="ba-slide">
-              <img src="assets/ba/6-after.jpg" alt="After: Sofa bed deep cleaning" loading="lazy" draggable="false">
-              <img class="ba-before" src="assets/ba/6-before.jpg" alt="Before: Sofa bed deep cleaning" loading="lazy" draggable="false">
-              <div class="ba-line"></div>
-              <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-              <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="ba-dots"><button type="button" class="ba-dot active" aria-label="Show example 1"></button><button type="button" class="ba-dot" aria-label="Show example 2"></button><button type="button" class="ba-dot" aria-label="Show example 3"></button></div>
-      </div>
       </div>
     </div>
   </div>
@@ -748,6 +725,47 @@
       </div>
     </div>
     <div class="section-cta"><a href="pricing.html" class="btn btn-gold">See Pricing</a></div>
+  </div>
+</section>
+
+<section class="section" id="more-results">
+  <div class="wrap">
+    <div class="results-band">
+      <div class="offer-head">
+        <span class="kicker">More results</span>
+        <h2>Rooms, mattresses and sofa beds</h2>
+      </div>
+    <div class="ba-row" data-ba-row aria-label="Before and after: rooms and mattresses">
+      <div class="ba-frame">
+        <button type="button" class="ba-arrow prev" aria-label="Previous example" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="ba-arrow next" aria-label="Next example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="ba-track">
+          <div class="ba-slide">
+            <img src="assets/ba/4-after.jpg" loading="lazy" alt="After: Room general cleaning" draggable="false">
+            <img class="ba-before" src="assets/ba/4-before.jpg" loading="lazy" alt="Before: Room general cleaning" draggable="false">
+            <div class="ba-line"></div>
+            <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
+            <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
+          </div>
+          <div class="ba-slide">
+            <img src="assets/ba/5-after.jpg" alt="After: Mattress deep cleaning" loading="lazy" draggable="false">
+            <img class="ba-before" src="assets/ba/5-before.jpg" alt="Before: Mattress deep cleaning" loading="lazy" draggable="false">
+            <div class="ba-line"></div>
+            <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
+            <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
+          </div>
+          <div class="ba-slide">
+            <img src="assets/ba/6-after.jpg" alt="After: Sofa bed deep cleaning" loading="lazy" draggable="false">
+            <img class="ba-before" src="assets/ba/6-before.jpg" alt="Before: Sofa bed deep cleaning" loading="lazy" draggable="false">
+            <div class="ba-line"></div>
+            <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
+            <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-dots"><button type="button" class="ba-dot active" aria-label="Show example 1"></button><button type="button" class="ba-dot" aria-label="Show example 2"></button><button type="button" class="ba-dot" aria-label="Show example 3"></button></div>
+    </div>
+    </div>
   </div>
 </section>
 

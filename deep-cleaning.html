@@ -301,6 +301,12 @@
   .ba-dot::after,.gcs-dot::after{content:"";position:absolute;inset:-17px -4px;}
   .ba-arrow::after,.gcs-arrow::after{content:"";position:absolute;inset:-7px;}
 
+  /* Deep cleaning steps, in photos */
+  .steps-strip{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .steps-strip li{display:flex;flex-direction:column;gap:8px;}
+  .steps-strip img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;box-shadow:0 8px 20px rgba(18,27,78,0.14);}
+  .steps-strip span{font-family:'Baloo 2';font-weight:700;color:var(--navy);font-size:0.98rem;line-height:1.2;}
+  @media (max-width:700px){ .steps-strip{grid-template-columns:repeat(2,1fr);gap:12px;} .steps-strip span{font-size:0.9rem;} }
   /* Before/after results (shared with the home page hero) */
   .ba-row{position:relative;}
   .ba-frame{
@@ -433,21 +439,12 @@
 
 <section class="gc-sec gc-gallery" id="photos">
   <div class="gc-wrap">
-    <div class="gcs" data-gcs>
-      <div class="gcs-frame">
-        <button type="button" class="gcs-arrow prev" aria-label="Previous photo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button type="button" class="gcs-arrow next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-        <div class="gcs-track">
-        <div class="gcs-slide"><img src="assets/dc/1.jpg" alt="Dry vacuum removes deep dirt and dust mites" draggable="false"></div>
-        <div class="gcs-slide"><img src="assets/dc/2.jpg" alt="Brushing and shampooing breaks down stains and odors" loading="lazy" draggable="false"></div>
-        <div class="gcs-slide"><img src="assets/dc/3.jpg" alt="Extraction and blow-drying" loading="lazy" draggable="false"></div>
-        <div class="gcs-slide"><img src="assets/dc/4.jpg" alt="High-pressure steaming kills allergens and bed bugs" loading="lazy" draggable="false"></div>
-        <div class="gcs-slide"><img src="assets/dc/5.jpg" alt="Actual dirty water taken from the item" loading="lazy" draggable="false"></div>
-        <div class="gcs-slide"><img src="assets/dc/6.jpg" alt="Actual upholstery shampoo, commercial-grade machines and specialized solutions" loading="lazy" draggable="false"></div>
-        </div>
-      </div>
-      <div class="gcs-dots"><button type="button" class="gcs-dot active" aria-label="Show photo 1"></button><button type="button" class="gcs-dot" aria-label="Show photo 2"></button><button type="button" class="gcs-dot" aria-label="Show photo 3"></button><button type="button" class="gcs-dot" aria-label="Show photo 4"></button><button type="button" class="gcs-dot" aria-label="Show photo 5"></button><button type="button" class="gcs-dot" aria-label="Show photo 6"></button></div>
-    </div>
+    <ol class="steps-strip" aria-label="Our deep cleaning process">
+      <li><img src="assets/dc/1.jpg" alt="Dry vacuum removes deep dirt and dust mites"><span>1. Dry vacuum</span></li>
+      <li><img src="assets/dc/2.jpg" alt="Brushing and shampooing breaks down stains and odors" loading="lazy"><span>2. Brushing &amp; shampooing</span></li>
+      <li><img src="assets/dc/3.jpg" alt="Extraction and blow-drying" loading="lazy"><span>3. Extraction &amp; blow-drying</span></li>
+      <li><img src="assets/dc/4.jpg" alt="High-pressure steaming kills allergens and bed bugs" loading="lazy"><span>4. High-pressure steaming</span></li>
+    </ol>
   </div>
 </section>
 
