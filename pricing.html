@@ -248,6 +248,23 @@
   .ba-dot,.gcs-dot{position:relative;}
   .ba-dot::after,.gcs-dot::after{content:"";position:absolute;inset:-17px -4px;}
   .ba-arrow::after,.gcs-arrow::after{content:"";position:absolute;inset:-7px;}
+
+  /* Sticky mobile booking bar */
+  .mbar{display:none;}
+  @media (max-width:820px){
+    .mbar{
+      display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;
+      padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(10,18,54,0.96);border-top:1px solid var(--line);
+      transform:translateY(110%);transition:transform 0.25s ease;
+    }
+    .mbar.show{transform:none;}
+    .mbar a{flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;font-weight:700;font-size:0.95rem;}
+    .mbar .m-call{border:1.5px solid rgba(255,255,255,0.35);color:var(--cream);}
+    .mbar .m-msg{background:var(--gold);color:var(--navy-deep);}
+    body{padding-bottom:76px;}
+  }
+  @media (prefers-reduced-motion:reduce){ .mbar{transition:none;} }
 </style>
 </head>
 <body>
@@ -499,5 +516,16 @@
   });
 </script>
 
+<div class="mbar" id="mbar" aria-label="Quick booking">
+  <a href="tel:+639954126945" class="m-call">Call</a>
+  <a href="https://m.me/522847734243823" target="_blank" rel="noopener" class="m-msg">Message Us</a>
+</div>
+<script>
+  (function(){
+    const bar=document.getElementById('mbar');
+    const onScroll=()=>bar.classList.toggle('show', window.scrollY>480);
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  })();
+</script>
 </body>
 </html>
