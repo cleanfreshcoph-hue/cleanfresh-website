@@ -23,14 +23,14 @@
 <title>Clean Fresh Co. | Sofa, Mattress &amp; Carpet Deep Cleaning, Metro Manila</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#101A4A;
     --navy-deep:#0A1236;
     --navy-2:#18246A;
-    --gold:#E2B94B;
-    --gold-deep:#C9A13A;
+    --gold:#FFD639;
+    --gold-deep:#F2C21F;
     --gold-text:#8A6B14;
     --paper:#FAF8F3;
     --paper-2:#F3EFE5;
@@ -39,7 +39,7 @@
     --line:#E7E2D6;
     --line-dark:rgba(255,255,255,0.14);
     --cream:#F4F1E8;
-    --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+    --serif:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
     --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
     --radius:16px;
     --shadow:0 1px 2px rgba(16,26,74,0.04),0 12px 30px rgba(16,26,74,0.07);
@@ -48,7 +48,7 @@
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
   body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-0.01em;line-height:1.12;font-variant-numeric:lining-nums;}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-0.02em;line-height:1.18;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;height:auto;display:block;}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
@@ -57,7 +57,7 @@
 
   .kicker{display:inline-block;font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;color:var(--gold-text);margin-bottom:14px;}
   .on-dark .kicker{color:var(--gold);}
-  .taglish{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold-text);font-size:1.25rem;}
+  .taglish{font-weight:600;color:var(--gold-text);font-size:1.1rem;}
   .on-dark .taglish{color:var(--gold);}
   .section{padding:96px 0;}
   .section-head{max-width:680px;margin-bottom:44px;}
@@ -98,13 +98,13 @@
 
   /* HERO */
   .hero{background:radial-gradient(120% 140% at 12% 0%,var(--navy-2) 0%,var(--navy) 45%,var(--navy-deep) 100%);color:var(--cream);padding:88px 0 96px;}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-  .hero h1{font-size:clamp(2rem,4.2vw,2.9rem);color:#fff;margin-bottom:20px;}
-  .hero h1 em{display:block;font-style:italic;font-weight:500;color:var(--gold);}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;}
+  .hero h1{font-size:clamp(1.9rem,3.5vw,2.6rem);color:#fff;margin-bottom:20px;}
+  .hero h1 em{display:block;font-style:normal;color:var(--gold);}
   .hero-lead{font-size:1.08rem;color:rgba(244,241,232,0.82);max-width:500px;}
   .hero-ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
   .proof{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:34px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line-dark);}
-  .proof b{display:block;font-family:var(--serif);font-weight:600;font-size:1.3rem;color:#fff;line-height:1.2;font-variant-numeric:lining-nums;}
+  .proof b{display:block;font-weight:700;font-size:1.15rem;color:#fff;line-height:1.25;}
   .proof span{font-size:0.84rem;color:rgba(244,241,232,0.7);}
 
   /* before / after */
@@ -133,16 +133,19 @@
 
   /* SERVICES */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+  .card{--pad:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:var(--pad);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;}
   .card .kicker{margin-bottom:10px;}
   .card h3{font-size:1.45rem;color:var(--navy);margin-bottom:10px;}
   .card p{color:var(--muted);font-size:0.95rem;}
   .ticks{list-style:none;margin:18px 0 6px;display:grid;gap:10px;font-size:0.94rem;}
   .ticks li{display:flex;gap:12px;}
   .ticks li::before{content:"";width:16px;height:1px;background:var(--gold-deep);margin-top:12px;flex-shrink:0;}
-  .card-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;}
-  .card-foot .from{font-size:0.82rem;color:var(--muted);}
-  .card-foot .from b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--navy);font-weight:600;line-height:1.1;font-variant-numeric:lining-nums;}
+  .card-foot{margin:auto calc(var(--pad) * -1) calc(var(--pad) * -1);padding:18px var(--pad);background:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+  .card .ticks{margin-bottom:24px;}
+  .card-foot .from{font-size:0.82rem;color:#fff;}
+  .card-foot .from b{display:block;font-size:1.35rem;color:var(--gold);font-weight:700;line-height:1.2;}
+  .card-foot .text-link{color:var(--gold);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;min-height:44px;}
+  .card-foot .text-link:hover{color:#fff;}
   .card-wrap{margin-top:22px;}
   .services-note{margin-top:26px;text-align:center;color:var(--muted);font-size:0.92rem;}
   .services-note a{margin-left:6px;}
@@ -157,7 +160,7 @@
   /* SAVINGS */
   .tint{background:var(--paper-2);}
   .savings-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-variant-numeric:tabular-nums;}
-  .savings-table caption{caption-side:top;text-align:left;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--navy);padding:0 0 12px;}
+  .savings-table caption{caption-side:top;text-align:left;font-size:1.05rem;font-weight:700;color:var(--navy);padding:0 0 12px;}
   .savings-table th{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--muted);text-align:right;padding:14px 18px;border-bottom:1px solid var(--line);background:#FCFBF7;}
   .savings-table th:first-child,.savings-table td:first-child{text-align:left;}
   .savings-table td{padding:14px 18px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;font-size:0.95rem;}
@@ -188,7 +191,7 @@
   .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .review{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;}
   .stars{color:var(--gold-deep);letter-spacing:3px;font-size:0.9rem;}
-  .review blockquote{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.45;color:var(--navy);flex-grow:1;}
+  .review blockquote{font-size:1rem;line-height:1.6;color:var(--ink);flex-grow:1;}
   .review cite{font-style:normal;font-size:0.88rem;color:var(--muted);font-weight:500;}
 
   /* EBOOK */
@@ -213,7 +216,7 @@
   /* FOOTER */
   footer{background:var(--navy-deep);color:var(--cream);padding:56px 0 30px;border-top:1px solid var(--line-dark);}
   .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap;}
-  .foot-brand{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:#fff;}
+  .foot-brand{font-size:1.25rem;font-weight:700;color:#fff;}
   .foot-brand small{display:block;font-family:var(--sans);font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-top:6px;font-weight:600;}
   .foot-links{display:flex;flex-wrap:wrap;gap:4px 26px;font-size:0.9rem;max-width:620px;}
   .foot-links a{color:rgba(244,241,232,0.75);display:inline-block;padding:10px 0;}
@@ -266,7 +269,7 @@
     .wrap{padding:0 16px;}
     .brand img{height:38px;}
     .nav-right .btn{padding:0 14px;font-size:0.8rem;min-height:40px;}
-    .card{padding:24px 20px;}
+    .card{--pad:22px;}
   }
   @media (max-width:360px){
     .nav-right .btn{display:none;}
