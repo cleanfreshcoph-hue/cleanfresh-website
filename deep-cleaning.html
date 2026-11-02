@@ -121,6 +121,13 @@
   .gc-intro{padding:46px 0 8px;text-align:center;}
   .gc-script{font-family:'Baloo 2';font-style:italic;font-weight:600;color:#2A6FE8;font-size:1.3rem;margin-bottom:10px;}
   .gc-lead{font-size:1.05rem;max-width:640px;margin:0 auto 18px;color:#3A4268;}
+  /* intro video (square) */
+  .dc-video{max-width:520px;margin:22px auto 0;}
+  .dc-video video{
+    display:block;width:100%;height:auto;aspect-ratio:1/1;background:var(--navy-deep);
+    border-radius:18px;box-shadow:0 14px 34px rgba(10,18,54,0.22);
+  }
+  .dc-video figcaption{margin-top:8px;font-size:0.86rem;color:#5C6690;}
   .gc-trust{
     display:inline-block;background:var(--gold);color:var(--navy-deep);font-weight:700;font-size:0.9rem;
     padding:9px 20px;border-radius:999px;
@@ -460,7 +467,16 @@
 <section class="gc-intro">
   <div class="gc-wrap">
     <p class="gc-script">Hindi lang linis, deep clean talaga.</p>
-    <p class="gc-lead">Most cleanings stop at the surface. We go deep, removing stains, dirt, bacteria, and odor trapped inside your upholstery. This page covers everything you can expect from our Deep Cleaning service, from how we clean to how we price it.</p>
+    <p class="gc-lead">Most cleanings stop at the surface. We remove the stains, dirt, bacteria and odor trapped inside your upholstery.</p>
+    <figure class="dc-video">
+      <video controls playsinline preload="none" width="1080" height="1080"
+        poster="assets/video/deep-cleaning-benefits-poster.jpg"
+        aria-label="Video: the benefits of deep cleaning your furniture">
+        <source src="assets/video/deep-cleaning-benefits.mp4" type="video/mp4">
+        <a href="assets/video/deep-cleaning-benefits.mp4">Watch the video: benefits of deep cleaning</a>
+      </video>
+      <figcaption>Tap to play (with sound): ano ba talaga ang benefits ng deep cleaning?</figcaption>
+    </figure>
   </div>
 </section>
 
