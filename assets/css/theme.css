@@ -152,3 +152,6 @@ footer .socials{display:flex;gap:14px;margin-top:18px;}
 .gtk ul{padding-left:38px;display:flex;flex-direction:column;gap:8px;}
 .gtk strong{color:var(--navy);}
 @media (max-width:640px){ .center-btns .btn-outline{width:100%;} }
+
+/* logo size on phones (same as home) */
+@media (max-width:480px){ .brand img{height:42px !important;} }
