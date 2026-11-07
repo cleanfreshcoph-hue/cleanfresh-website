@@ -155,3 +155,27 @@ footer .socials{display:flex;gap:14px;margin-top:18px;}
 
 /* logo size on phones (same as home) */
 @media (max-width:480px){ .brand img{height:42px !important;} }
+
+/* ---------- commercial cleaning page ---------- */
+.hero-cta{margin-top:22px;display:flex;justify-content:center;}
+.hero-cta .btn{min-height:50px;padding:0 28px;font-size:0.98rem;}
+.biz-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.biz-card{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);}
+.biz-card h3{font-size:1rem;color:var(--navy);margin-bottom:4px;}
+.biz-card p{font-size:0.9rem;color:var(--muted);line-height:1.45;}
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.work-grid figure{margin:0;}
+.work-grid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:12px;box-shadow:var(--shadow);}
+.work-grid figcaption{font-size:0.84rem;color:var(--muted);margin-top:8px;font-weight:500;}
+.sig.offer{text-align:center;}
+.sig.offer .gc-h2{font-size:clamp(1.3rem,3.2vw,1.7rem);line-height:1.3;}
+.quote-list{max-width:520px;margin:6px auto 0;background:#fff;border:1px solid var(--edge);border-radius:14px;padding:18px 20px 18px 40px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;color:var(--ink);font-size:0.95rem;}
+@media (max-width:700px){ .work-grid{grid-template-columns:repeat(2,1fr);gap:12px;} }
+@media (max-width:380px){ .biz-grid{grid-template-columns:1fr;} }
+
+/* room for 'Commercial Cleaning' in the menu on narrow laptops */
+@media (min-width:821px) and (max-width:900px){
+  .nav-links{gap:9px !important;} .nav-links a{font-size:0.74rem !important;}
+  .brand img{height:42px !important;}
+  .nav-right .btn-gold{padding:8px 12px !important;font-size:0.76rem !important;}
+}
