@@ -179,3 +179,7 @@ footer .socials{display:flex;gap:14px;margin-top:18px;}
   .brand img{height:42px !important;}
   .nav-right .btn-gold{padding:8px 12px !important;font-size:0.76rem !important;}
 }
+
+/* links inside price tables and notes */
+.pt-link,.gtk a{color:var(--navy);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;text-decoration-thickness:2px;}
+.price-table td.pt-note,.disclaimer{font-style:normal !important;}
