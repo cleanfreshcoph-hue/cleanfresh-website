@@ -604,7 +604,7 @@
         const og = document.createElement('optgroup'); og.label = g.group;
         g.items.forEach(it => {
           const o = document.createElement('option'); o.value = it.id;
-          o.textContent = it.name + ' · ' + (it.quote ? 'quote' : pesoRange(it.min, it.max));
+          o.textContent = it.name;
           og.appendChild(o);
         });
         sel.appendChild(og);
