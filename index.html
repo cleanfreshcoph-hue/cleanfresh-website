@@ -337,6 +337,12 @@
     .hero-ctas{order:4;margin-top:0;}
   }
   @media (max-width:640px){ .reply-note{text-align:center;} .call-link{flex-basis:100%;justify-content:center;} }
+
+  /* Christmas countdown (shown only Dec 1 earlier through Dec 25, Manila time) */
+  .xmas-count{display:inline-flex;align-items:baseline;gap:8px;margin:0 0 16px;padding:8px 16px;border:1px solid rgba(255,214,57,0.55);border-radius:999px;color:#F4F1E8;font-size:0.95rem;font-weight:500;}
+  .xmas-count b{color:var(--gold);font-size:1.35rem;font-weight:800;line-height:1;}
+  .xmas-count[hidden]{display:none;}
+  @media (max-width:1000px){ .xmas-count{order:0;align-self:center;margin-bottom:14px;} }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Clean Fresh Co.",
@@ -375,6 +381,7 @@
 <section class="hero on-dark" id="hero">
   <div class="wrap hero-grid">
     <div>
+      <p class="xmas-count" id="xmasCount" hidden><b id="xmasDays">0</b> <span id="xmasLabel">days until Christmas</span></p>
       <h1>Christmas is near. <em>Is your sofa ready?</em></h1>
       <p class="hero-feel">Family and friends notice everything.<span>Don&rsquo;t let a stained sofa be the talk of the night.</span></p>
       <div class="hero-ctas">
@@ -670,6 +677,19 @@
     }, { threshold: 0.4 });
     counters.forEach(c => { c.textContent = '₱0'; obs.observe(c); });
   }
+
+  /* Christmas countdown: days left to Dec 25 in Manila time; hidden after Christmas */
+  (function(){
+    const box = document.getElementById('xmasCount');
+    if (!box) return;
+    const m = new Date(Date.now() + 8 * 3600 * 1000);            // Manila is UTC+8, no DST
+    const y = m.getUTCFullYear(), today = Date.UTC(y, m.getUTCMonth(), m.getUTCDate());
+    const days = Math.round((Date.UTC(y, 11, 25) - today) / 86400000);
+    if (days < 0 || days > 60) return;                           // show from late October to Christmas Day
+    if (days === 0) { document.getElementById('xmasDays').textContent = 'Merry Christmas'; document.getElementById('xmasLabel').textContent = 'from Clean Fresh Co.'; }
+    else { document.getElementById('xmasDays').textContent = days; document.getElementById('xmasLabel').textContent = days === 1 ? 'day until Christmas' : 'days until Christmas'; }
+    box.hidden = false;
+  })();
 
   /* Sticky booking bar on phones */
   (function(){
