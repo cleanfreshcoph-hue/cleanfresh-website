@@ -35,7 +35,7 @@
     --paper:#FAF8F3;
     --paper-2:#F3EFE5;
     --ink:#1A2140;
-    --muted:#565E80;
+    --muted:#454C6E;
     --line:#E7E2D6;
     --line-dark:rgba(255,255,255,0.14);
     --cream:#F4F1E8;
@@ -109,33 +109,18 @@
   .proof span{font-size:0.84rem;color:rgba(244,241,232,0.7);}
 
   /* before / after */
-  .ba-frame{position:relative;border-radius:14px;overflow:hidden;background:var(--navy-deep);box-shadow:0 30px 60px rgba(0,0,0,0.35);}
-  .ba-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-  .ba-track::-webkit-scrollbar{display:none;}
-  .ba-slide{position:relative;flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;aspect-ratio:16/9;overflow:hidden;--pos:50%;user-select:none;-webkit-user-select:none;}
-  .ba-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;}
-  .ba-slide .ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);}
-  .ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;pointer-events:none;}
-  .ba-zone{position:absolute;top:0;bottom:0;left:var(--pos);width:64px;margin-left:-32px;display:flex;align-items:center;justify-content:center;cursor:ew-resize;touch-action:pan-y;z-index:2;}
-  .ba-knob{width:42px;height:42px;border-radius:50%;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.3);}
-  .ba-knob svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
-  .ba-tag{position:absolute;bottom:12px;z-index:1;pointer-events:none;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;padding:6px 12px;border-radius:999px;}
-  .ba-tag.b{left:12px;background:rgba(10,18,54,0.78);color:#fff;}
-  .ba-tag.a{right:12px;background:var(--gold);color:var(--navy-deep);}
-  .ba-arrow{position:absolute;top:12px;z-index:3;width:36px;height:36px;border-radius:50%;background:rgba(10,18,54,0.6);border:1px solid rgba(255,255,255,0.4);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;}
-  .ba-arrow::after{content:"";position:absolute;inset:-6px;}
-  .ba-arrow[disabled]{opacity:0.3;cursor:default;}
-  .ba-arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}
-  .ba-arrow.prev{left:12px;} .ba-arrow.next{right:12px;}
-  .ba-dots{display:flex;justify-content:center;gap:10px;margin-top:16px;}
-  .ba-dot{position:relative;width:8px;height:8px;border-radius:50%;border:0;padding:0;cursor:pointer;background:rgba(255,255,255,0.3);transition:width .2s ease,background-color .2s ease;}
-  .ba-dot::after{content:"";position:absolute;inset:-18px -5px;}
-  .ba-dot.active{background:var(--gold);width:22px;border-radius:6px;}
 
   /* SERVICES */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .card{--pad:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:var(--pad);box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;}
   .card .kicker{margin-bottom:10px;}
+  .card-img{margin:calc(var(--pad) * -1) calc(var(--pad) * -1) 24px;aspect-ratio:16/10;overflow:hidden;background:var(--line);}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;}
+  .card{transition:transform .2s ease,box-shadow .2s ease;}
+  .card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(16,26,74,0.05),0 18px 40px rgba(16,26,74,0.12);}
+  .card:hover .card-img img{transform:scale(1.03);}
+  .card-foot .text-link:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  .card:focus-within{transform:translateY(-2px);}
   .card h3{font-size:1.45rem;color:var(--navy);margin-bottom:10px;}
   .card p{color:var(--muted);font-size:0.95rem;}
   .ticks{list-style:none;margin:18px 0 6px;display:grid;gap:10px;font-size:0.94rem;}
@@ -167,7 +152,7 @@
   .savings-table td{padding:14px 18px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;font-size:0.95rem;}
   .savings-table tr:last-child td{border-bottom:0;}
   .savings-table td:first-child{white-space:normal;color:var(--navy);font-weight:500;}
-  .savings-table .old{color:#9C978A;text-decoration:line-through;}
+  .savings-table .old{color:#736E64;text-decoration:line-through;}
   .savings-table .new{color:var(--navy);font-weight:600;}
   .savings-table .save{color:var(--gold-text);font-weight:700;}
   .freebie{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:18px 20px;margin-top:22px;font-size:0.95rem;}
@@ -192,7 +177,7 @@
   /* REVIEWS */
   .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .review{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;}
-  .stars{color:var(--gold-deep);letter-spacing:3px;font-size:0.9rem;}
+  .stars{color:#B8860B;letter-spacing:3px;font-size:0.9rem;}
   .review blockquote{font-size:1rem;line-height:1.6;color:var(--ink);flex-grow:1;}
   .review cite{font-style:normal;font-size:0.88rem;color:var(--muted);font-weight:500;}
 
@@ -278,7 +263,8 @@
     .proof{grid-template-columns:1fr;gap:12px;}
   }
   @media (prefers-reduced-motion:reduce){
-    .mbar,.btn,.ba-dot{transition:none;}
+    .mbar,.btn,.card,.card-img img{transition:none;}
+    .card:hover,.card:focus-within,.card:hover .card-img img{transform:none;}
   }
 
   /* ---------- Rendition 2: calmer, fewer elements ---------- */
@@ -288,18 +274,19 @@
   .section-head.center p{margin-left:auto;margin-right:auto;max-width:560px;}
   .hero{padding:96px 0 104px;}
   .hero-lead{margin-top:4px;}
+  .hero-ba{width:100%;height:auto;}
+  @media (min-width:901px){ .hero .hero-grid{grid-template-columns:0.9fr 1.1fr;gap:40px;} }
+  @media (min-width:901px) and (min-height:620px){ .hero{min-height:calc(100svh - var(--nav-h,73px));display:flex;align-items:center;padding:56px 0;} .hero > .wrap{width:100%;} }
   .proof-line{margin-top:36px;padding-top:22px;border-top:1px solid var(--line-dark);display:flex;flex-wrap:wrap;gap:8px 28px;font-size:0.9rem;color:rgba(244,241,232,0.78);}
   .proof-line b{color:#fff;font-weight:700;}
   .card h3{margin-bottom:8px;}
   .card p{margin-bottom:28px;}
   .note-center{margin-top:28px;text-align:center;color:var(--muted);font-size:0.9rem;}
   .results-wrap{max-width:860px;margin:0 auto;}
-  .results-wrap .ba-dots .ba-dot{background:#CFC9B8;}
-  .results-wrap .ba-dots .ba-dot.active{background:var(--navy);}
   .center-cta{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
   .savings-wrap{max-width:720px;margin:0 auto;}
   .savings-wrap .savings-table caption{text-align:center;}
-  .freebie-line{margin-top:18px;text-align:center;font-size:0.92rem;color:var(--muted);}
+  .freebie-line{margin-top:18px;text-align:center;font-size:1rem;color:var(--muted);}
   .freebie-line strong{color:var(--navy);}
   .gallery.even{justify-content:flex-start;}
   .reviews.three{grid-template-columns:repeat(3,1fr);}
@@ -391,36 +378,7 @@
       </div>
     </div>
     <div>
-        <div class="ba-row" data-ba-row aria-label="Before and after: sofas">
-          <div class="ba-frame">
-            <button type="button" class="ba-arrow prev" aria-label="Previous example" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button type="button" class="ba-arrow next" aria-label="Next example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-            <div class="ba-track">
-              <div class="ba-slide">
-                <img src="assets/ba/1-after.jpg" fetchpriority="high" alt="After: Sofa deep cleaning" draggable="false">
-                <img class="ba-before" src="assets/ba/1-before.jpg" fetchpriority="high" alt="Before: Sofa deep cleaning" draggable="false">
-                <div class="ba-line"></div>
-                <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-                <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after: sofa deep cleaning" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
-              </div>
-              <div class="ba-slide">
-                <img src="assets/gallery/blue-loveseat-after.jpg" loading="lazy" alt="After: Blue loveseat deep cleaning" draggable="false">
-                <img class="ba-before" src="assets/gallery/blue-loveseat-before.jpg" loading="lazy" alt="Before: Blue loveseat deep cleaning" draggable="false">
-                <div class="ba-line"></div>
-                <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-                <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after: blue loveseat deep cleaning" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
-              </div>
-              <div class="ba-slide">
-                <img src="assets/ba/3-after.jpg" loading="lazy" alt="After: Fabric sofa deep cleaning" draggable="false">
-                <img class="ba-before" src="assets/ba/3-before.jpg" loading="lazy" alt="Before: Fabric sofa deep cleaning" draggable="false">
-                <div class="ba-line"></div>
-                <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
-                <div class="ba-zone" role="slider" tabindex="0" aria-label="Drag to compare before and after: fabric sofa deep cleaning" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></svg></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="ba-dots"><button type="button" class="ba-dot active" aria-label="Show example 1"></button><button type="button" class="ba-dot" aria-label="Show example 2"></button><button type="button" class="ba-dot" aria-label="Show example 3"></button></div>
-        </div>
+        <img class="hero-ba" src="assets/hero/sofa-before-after.webp" width="1059" height="472" fetchpriority="high" alt="Before and after: a brown loveseat covered in water stains, then the same loveseat clean and even after Clean Fresh Co. deep cleaning">
     </div>
   </div>
 </section>
@@ -434,18 +392,21 @@
     </div>
     <div class="cards">
       <article class="card">
+        <div class="card-img"><img src="assets/gallery/sectional-after.jpg" alt="Sectional sofa after deep cleaning" loading="lazy" width="800" height="500"></div>
         <span class="kicker">Deep cleaning</span>
         <h3>Sofas, mattresses &amp; carpets</h3>
         <p>Shampoo, extraction, steam and blow-dry. Stains, odor and dust mites out.</p>
         <div class="card-foot"><span class="from">Items from<b>₱1,200</b></span><a href="deep-cleaning.html" class="text-link">Deep cleaning →</a></div>
       </article>
       <article class="card">
+        <div class="card-img"><img src="assets/homes/hallway.jpg" alt="Home hallway after general cleaning" loading="lazy" width="800" height="500"></div>
         <span class="kicker">General cleaning</span>
         <h3>Condos &amp; homes</h3>
         <p>Kitchen and window degreasing and heavy bathroom steaming, all included.</p>
         <div class="card-foot"><span class="from">Studio<b>₱1,950</b></span><a href="general-cleaning.html" class="text-link">General cleaning →</a></div>
       </article>
       <article class="card">
+        <div class="card-img"><img src="assets/commercial/team-at-work.jpg" alt="Clean Fresh Co. team cleaning a barbershop" loading="lazy" width="800" height="500"></div>
         <span class="kicker">Commercial &amp; big homes</span>
         <h3>Businesses &amp; 150–600 sqm homes</h3>
         <p>Restaurants, cinemas, offices and big homes. Up to 50% off for 500 sqm+.</p>
@@ -529,7 +490,7 @@
     <h2>Book your cleaning</h2>
     <p>Message us your preferred date and the size of your space. We'll confirm within the day.</p>
     <div class="hero-ctas">
-      <a href="https://m.me/522847734243823" target="_blank" rel="noopener" class="btn btn-gold">Book on Messenger</a>
+      <a href="https://m.me/522847734243823" target="_blank" rel="noopener" class="btn btn-gold">Send a photo, get your price</a>
       <a href="tel:+639954126945" class="btn btn-ghost">Call 0995 412 6945</a>
     </div>
   </div>
@@ -582,74 +543,6 @@
       navToggle.setAttribute('aria-expanded', 'false');
     });
   });
-
-  /* Before / After rows */
-  (function(){
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.querySelectorAll('[data-ba-row]').forEach((row, rowIdx) => {
-      const track = row.querySelector('.ba-track');
-      const slides = [...row.querySelectorAll('.ba-slide')];
-      const dots = [...row.querySelectorAll('.ba-dot')];
-      const prev = row.querySelector('.ba-arrow.prev');
-      const next = row.querySelector('.ba-arrow.next');
-      let idx = 0, userTouched = false, timer = null;
-
-      const go = i => {
-        i = Math.max(0, Math.min(slides.length - 1, i));
-        track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
-      };
-      const sync = () => {
-        idx = Math.round(track.scrollLeft / track.clientWidth);
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-        prev.disabled = idx === 0; next.disabled = idx === slides.length - 1;
-      };
-      track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
-      prev.addEventListener('click', () => { userTouched = true; go(idx - 1); });
-      next.addEventListener('click', () => { userTouched = true; go(idx + 1); });
-      dots.forEach((d, i) => d.addEventListener('click', () => { userTouched = true; go(i); }));
-      row.addEventListener('pointerdown', () => { userTouched = true; });
-
-      /* Drag the divider */
-      slides.forEach(slide => {
-        const zone = slide.querySelector('.ba-zone');
-        const set = pct => {
-          pct = Math.max(2, Math.min(98, pct));
-          slide.style.setProperty('--pos', pct + '%');
-          zone.setAttribute('aria-valuenow', Math.round(pct));
-        };
-        const move = e => {
-          const r = slide.getBoundingClientRect();
-          set((e.clientX - r.left) / r.width * 100);
-        };
-        zone.addEventListener('pointerdown', e => {
-          e.preventDefault(); zone.setPointerCapture(e.pointerId);
-          slide.classList.add('dragging'); move(e);
-        });
-        zone.addEventListener('pointermove', e => { if (slide.classList.contains('dragging')) move(e); });
-        const end = () => slide.classList.remove('dragging');
-        zone.addEventListener('pointerup', end);
-        zone.addEventListener('pointercancel', end);
-        zone.addEventListener('keydown', e => {
-          const cur = parseFloat(getComputedStyle(slide).getPropertyValue('--pos')) || 50;
-          if (e.key === 'ArrowLeft') { set(cur - 5); e.preventDefault(); }
-          if (e.key === 'ArrowRight') { set(cur + 5); e.preventDefault(); }
-        });
-      });
-
-      /* Gentle auto-advance while visible, until the visitor interacts */
-      if (!reduce && 'IntersectionObserver' in window) {
-        const tick = () => {
-          if (userTouched) return stop();
-          go(idx === slides.length - 1 ? 0 : idx + 1);
-        };
-        const start = () => { if (!timer && !userTouched) timer = setInterval(tick, 5500 + rowIdx * 1500); };
-        const stop = () => { clearInterval(timer); timer = null; };
-        new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: 0.5 }).observe(row);
-      }
-      window.addEventListener('resize', () => track.scrollTo({ left: idx * track.clientWidth }));
-    });
-  })();
-
 
   /* Count up the peso savings once they scroll into view */
   const counters = document.querySelectorAll('.count-up');
