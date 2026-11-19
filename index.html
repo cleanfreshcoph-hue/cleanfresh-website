@@ -329,6 +329,29 @@
   .xmas-count{display:inline-flex;align-items:baseline;gap:8px;margin:0 0 16px;padding:8px 16px;border:1px solid rgba(255,214,57,0.55);border-radius:999px;color:#F4F1E8;font-size:0.95rem;font-weight:500;}
   .xmas-count b{color:var(--gold);font-size:1.35rem;font-weight:800;line-height:1;}
   .xmas-count[hidden]{display:none;}
+  /* Christmas festive layer: parols, gold sparkles, countdown motion (only while the countdown shows) */
+  .hero{position:relative;overflow:hidden;}
+  .hero > .wrap{position:relative;z-index:2;}
+  .xmas-fx{position:absolute;inset:0;pointer-events:none;z-index:1;}
+  canvas.xmas-fx{width:100%;height:100%;}
+  .parol{position:absolute;top:0;transform-origin:50% 0;animation:parol-sway 4.2s ease-in-out infinite alternate;}
+  .parol-string{width:2px;margin:0 auto;background:linear-gradient(rgba(255,214,57,0.15),rgba(255,214,57,0.7));}
+  .parol svg{display:block;width:56px;height:auto;filter:drop-shadow(0 0 10px rgba(255,214,57,0.45));}
+  .parol.p1{left:4%;} .parol.p2{right:5%;animation-duration:5s;animation-delay:-1.5s;} .parol.p2 svg{width:46px;}
+  .parol.p3{left:46%;animation-duration:4.6s;animation-delay:-0.8s;display:none;}
+  @keyframes parol-sway{from{transform:rotate(-5deg);}to{transform:rotate(5deg);}}
+  .parol .bulb{animation:parol-twinkle 1.6s ease-in-out infinite;}
+  @keyframes parol-twinkle{0%,100%{opacity:1;}50%{opacity:0.25;}}
+  .xmas-count{transform-origin:50% 60%;}
+  .xmas-count b{display:inline-block;font-variant-numeric:tabular-nums;}
+  .xmas-count.jingle{animation:xmas-jingle 0.9s ease-in-out;}
+  @keyframes xmas-jingle{0%,100%{transform:rotate(0) scale(1);}15%{transform:rotate(-7deg) scale(1.06);}30%{transform:rotate(6deg) scale(1.06);}45%{transform:rotate(-5deg) scale(1.04);}60%{transform:rotate(3deg);}75%{transform:rotate(-2deg);}}
+  .xmas-count b.pop{animation:xmas-pop 0.35s ease-out;}
+  @keyframes xmas-pop{0%{transform:scale(1);}50%{transform:scale(1.35);}100%{transform:scale(1);}}
+  @media (max-width:900px){ .hero.festive{padding-top:128px;} }
+  @media (max-width:360px){ .parol.p1 svg{width:44px;} .parol.p2 svg{width:38px;} }
+  @media (min-width:901px){ .parol.p3{display:block;left:52%;} .parol.p1{left:70%;} .parol.p2{right:4%;} .parol.p1 svg{width:84px;} .parol.p2 svg{width:66px;} .parol.p3 svg{width:56px;} }
+  @media (prefers-reduced-motion:reduce){ .parol,.parol .bulb,.xmas-count.jingle,.xmas-count b.pop{animation:none;} }
   @media (max-width:1000px){ .xmas-count{order:0;align-self:center;margin-bottom:14px;} }
 </style>
 <script type="application/ld+json">
@@ -366,6 +389,8 @@
 
 <main>
 <section class="hero on-dark" id="hero">
+  <canvas class="xmas-fx" id="xmasFx" aria-hidden="true" hidden></canvas>
+  <div class="xmas-fx" id="xmasParols" aria-hidden="true" hidden><div class="parol p1"><div class="parol-string" style="height:26px"></div><svg viewBox="0 0 100 160" focusable="false"><circle cx="50" cy="50" r="40" fill="rgba(255,214,57,0.10)" stroke="#FFD639" stroke-width="3"/><polygon points="50.0,16.0 58.2,38.7 82.3,39.5 63.3,54.3 70.0,77.5 50.0,64.0 30.0,77.5 36.7,54.3 17.7,39.5 41.8,38.7" fill="#FFD639"/><polygon points="50.0,33.0 54.1,44.3 66.2,44.7 56.7,52.2 60.0,63.8 50.0,57.0 40.0,63.8 43.3,52.2 33.8,44.7 45.9,44.3" fill="#FFF6C9"/><circle class="bulb" cx="90.0" cy="50.0" r="3.2" fill="#FFD639" style="animation-delay:0.00s"/><circle class="bulb" cx="84.6" cy="70.0" r="3.2" fill="#FFFFFF" style="animation-delay:1.33s"/><circle class="bulb" cx="70.0" cy="84.6" r="3.2" fill="#FF6B6B" style="animation-delay:1.06s"/><circle class="bulb" cx="50.0" cy="90.0" r="3.2" fill="#FFD639" style="animation-delay:0.79s"/><circle class="bulb" cx="30.0" cy="84.6" r="3.2" fill="#FFFFFF" style="animation-delay:0.52s"/><circle class="bulb" cx="15.4" cy="70.0" r="3.2" fill="#FF6B6B" style="animation-delay:0.25s"/><circle class="bulb" cx="10.0" cy="50.0" r="3.2" fill="#FFD639" style="animation-delay:1.58s"/><circle class="bulb" cx="15.4" cy="30.0" r="3.2" fill="#FFFFFF" style="animation-delay:1.31s"/><circle class="bulb" cx="30.0" cy="15.4" r="3.2" fill="#FF6B6B" style="animation-delay:1.04s"/><circle class="bulb" cx="50.0" cy="10.0" r="3.2" fill="#FFD639" style="animation-delay:0.77s"/><circle class="bulb" cx="70.0" cy="15.4" r="3.2" fill="#FFFFFF" style="animation-delay:0.50s"/><circle class="bulb" cx="84.6" cy="30.0" r="3.2" fill="#FF6B6B" style="animation-delay:0.23s"/><path d="M38 90 C34 110 44 122 36 150" stroke="#FFD639" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M50 92 C54 112 46 126 52 156" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9"/><path d="M62 90 C66 110 56 122 64 150" stroke="#FFD639" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div><div class="parol p2"><div class="parol-string" style="height:46px"></div><svg viewBox="0 0 100 160" focusable="false"><circle cx="50" cy="50" r="40" fill="rgba(255,214,57,0.10)" stroke="#FFD639" stroke-width="3"/><polygon points="50.0,16.0 58.2,38.7 82.3,39.5 63.3,54.3 70.0,77.5 50.0,64.0 30.0,77.5 36.7,54.3 17.7,39.5 41.8,38.7" fill="#FFD639"/><polygon points="50.0,33.0 54.1,44.3 66.2,44.7 56.7,52.2 60.0,63.8 50.0,57.0 40.0,63.8 43.3,52.2 33.8,44.7 45.9,44.3" fill="#FFF6C9"/><circle class="bulb" cx="90.0" cy="50.0" r="3.2" fill="#FFD639" style="animation-delay:0.00s"/><circle class="bulb" cx="84.6" cy="70.0" r="3.2" fill="#FFFFFF" style="animation-delay:1.33s"/><circle class="bulb" cx="70.0" cy="84.6" r="3.2" fill="#FF6B6B" style="animation-delay:1.06s"/><circle class="bulb" cx="50.0" cy="90.0" r="3.2" fill="#FFD639" style="animation-delay:0.79s"/><circle class="bulb" cx="30.0" cy="84.6" r="3.2" fill="#FFFFFF" style="animation-delay:0.52s"/><circle class="bulb" cx="15.4" cy="70.0" r="3.2" fill="#FF6B6B" style="animation-delay:0.25s"/><circle class="bulb" cx="10.0" cy="50.0" r="3.2" fill="#FFD639" style="animation-delay:1.58s"/><circle class="bulb" cx="15.4" cy="30.0" r="3.2" fill="#FFFFFF" style="animation-delay:1.31s"/><circle class="bulb" cx="30.0" cy="15.4" r="3.2" fill="#FF6B6B" style="animation-delay:1.04s"/><circle class="bulb" cx="50.0" cy="10.0" r="3.2" fill="#FFD639" style="animation-delay:0.77s"/><circle class="bulb" cx="70.0" cy="15.4" r="3.2" fill="#FFFFFF" style="animation-delay:0.50s"/><circle class="bulb" cx="84.6" cy="30.0" r="3.2" fill="#FF6B6B" style="animation-delay:0.23s"/><path d="M38 90 C34 110 44 122 36 150" stroke="#FFD639" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M50 92 C54 112 46 126 52 156" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9"/><path d="M62 90 C66 110 56 122 64 150" stroke="#FFD639" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div><div class="parol p3"><div class="parol-string" style="height:14px"></div><svg viewBox="0 0 100 160" focusable="false"><circle cx="50" cy="50" r="40" fill="rgba(255,214,57,0.10)" stroke="#FFD639" stroke-width="3"/><polygon points="50.0,16.0 58.2,38.7 82.3,39.5 63.3,54.3 70.0,77.5 50.0,64.0 30.0,77.5 36.7,54.3 17.7,39.5 41.8,38.7" fill="#FFD639"/><polygon points="50.0,33.0 54.1,44.3 66.2,44.7 56.7,52.2 60.0,63.8 50.0,57.0 40.0,63.8 43.3,52.2 33.8,44.7 45.9,44.3" fill="#FFF6C9"/><circle class="bulb" cx="90.0" cy="50.0" r="3.2" fill="#FFD639" style="animation-delay:0.00s"/><circle class="bulb" cx="84.6" cy="70.0" r="3.2" fill="#FFFFFF" style="animation-delay:1.33s"/><circle class="bulb" cx="70.0" cy="84.6" r="3.2" fill="#FF6B6B" style="animation-delay:1.06s"/><circle class="bulb" cx="50.0" cy="90.0" r="3.2" fill="#FFD639" style="animation-delay:0.79s"/><circle class="bulb" cx="30.0" cy="84.6" r="3.2" fill="#FFFFFF" style="animation-delay:0.52s"/><circle class="bulb" cx="15.4" cy="70.0" r="3.2" fill="#FF6B6B" style="animation-delay:0.25s"/><circle class="bulb" cx="10.0" cy="50.0" r="3.2" fill="#FFD639" style="animation-delay:1.58s"/><circle class="bulb" cx="15.4" cy="30.0" r="3.2" fill="#FFFFFF" style="animation-delay:1.31s"/><circle class="bulb" cx="30.0" cy="15.4" r="3.2" fill="#FF6B6B" style="animation-delay:1.04s"/><circle class="bulb" cx="50.0" cy="10.0" r="3.2" fill="#FFD639" style="animation-delay:0.77s"/><circle class="bulb" cx="70.0" cy="15.4" r="3.2" fill="#FFFFFF" style="animation-delay:0.50s"/><circle class="bulb" cx="84.6" cy="30.0" r="3.2" fill="#FF6B6B" style="animation-delay:0.23s"/><path d="M38 90 C34 110 44 122 36 150" stroke="#FFD639" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M50 92 C54 112 46 126 52 156" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9"/><path d="M62 90 C66 110 56 122 64 150" stroke="#FFD639" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div></div>
   <div class="wrap hero-grid">
     <div>
       <p class="xmas-count" id="xmasCount" hidden><b id="xmasDays">0</b> <span id="xmasLabel">days until Christmas</span></p>
@@ -582,6 +607,41 @@
     if (days === 0) { document.getElementById('xmasDays').textContent = 'Merry Christmas'; document.getElementById('xmasLabel').textContent = 'from Clean Fresh Co.'; }
     else { document.getElementById('xmasDays').textContent = days; document.getElementById('xmasLabel').textContent = days === 1 ? 'day until Christmas' : 'days until Christmas'; }
     box.hidden = false;
+
+    /* Festive layer: parols, falling gold sparkles, countdown count-up and jingle */
+    const hero = document.getElementById('hero'), parols = document.getElementById('xmasParols'), cv = document.getElementById('xmasFx');
+    const daysEl = document.getElementById('xmasDays');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    hero.classList.add('festive'); parols.hidden = false;
+    if (reduce) return;
+    if (days > 0) {
+      const t0 = performance.now(), dur = 1400;
+      daysEl.textContent = '0';
+      (function step(t){ const p = Math.min(1, (t - t0) / dur); daysEl.textContent = Math.round(days * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step); else { daysEl.classList.add('pop'); } })(t0);
+    }
+    setInterval(() => { if (document.hidden) return; box.classList.remove('jingle'); void box.offsetWidth; box.classList.add('jingle'); }, 5000);
+    if (!cv.getContext) return;
+    cv.hidden = false;
+    const ctx = cv.getContext('2d');
+    let W = 0, H = 0, parts = [], raf = null, onScreen = true;
+    const spawn = (anywhere) => ({ x: Math.random() * W, y: anywhere ? Math.random() * H : -10, s: 2 + Math.random() * 3, v: 0.3 + Math.random() * 0.45, w: Math.random() * 6.28, a: 0.5 + Math.random() * 0.5, rot: Math.random() * 6.28 });
+    const size = () => { const r = hero.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+      const n = Math.round(Math.min(26, Math.max(12, W * H / 30000))); parts = Array.from({ length: n }, () => spawn(true)); };
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#FFD639';
+      for (let i = 0; i < parts.length; i++) { const p = parts[i];
+        p.y += p.v; p.w += 0.012; p.x += Math.sin(p.w) * 0.35; p.rot += 0.01;
+        if (p.y > H + 10) { parts[i] = spawn(false); continue; }
+        const k = p.s * 1.8; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.globalAlpha = p.a * (0.6 + 0.4 * Math.sin(p.w * 3));
+        ctx.beginPath(); ctx.moveTo(0, -k); ctx.quadraticCurveTo(0, 0, k, 0); ctx.quadraticCurveTo(0, 0, 0, k); ctx.quadraticCurveTo(0, 0, -k, 0); ctx.quadraticCurveTo(0, 0, 0, -k); ctx.fill(); ctx.restore(); }
+      raf = requestAnimationFrame(draw);
+    };
+    const run = () => { cancelAnimationFrame(raf); raf = null; if (onScreen && !document.hidden) raf = requestAnimationFrame(draw); };
+    size(); run();
+    window.addEventListener('resize', () => { size(); });
+    document.addEventListener('visibilitychange', run);
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { onScreen = es[0].isIntersecting; run(); }).observe(hero);
   })();
 
   /* Sticky booking bar on phones */
